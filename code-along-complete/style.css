@@ -30,7 +30,7 @@
   }
   
   /* Goals Section Styling */
-  .goals, .goal-list, .reflection {
+  .goals, .goal-list {
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
@@ -73,30 +73,6 @@
   button:hover {
     background-color: #3c3ca1;
     transform: translateY(-2px);
-  }
-  
-  /* Progress Bar */
-  .progress {
-    margin-bottom: 20px;
-  }
-  
-  .progress-bar-container {
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 10px;
-  }
-  
-  .progress-bar {
-    height: 20px;
-    width: 0%;
-    background-color: #4949B4;
-    transition: width 0.4s ease;
-  }
-  
-  #progress-percentage {
-    text-align: center;
   }
   
   /* Goals List */
@@ -145,7 +121,7 @@
       grid-gap: 20px;
     }
   
-    .goals, .reflection {
+    .goals {
       grid-column: 1 / 2;
     }
   

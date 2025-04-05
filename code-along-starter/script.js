@@ -1,76 +1,42 @@
-const goals = []
+const goals = [] //where we'll store our goals
 
-const goalOutput = document.getElementById('goal-output')
+//First we need to get the data the user inputted into the form
+const goalForm = document.getElementById('goal-form')
 
-function createCheckbox(goal, index){
-  const checkbox = document.createElement('input')
-  checkbox.type = 'checkbox';
-  checkbox.checked = goal.completed;
-
-  function checkOffGoal(){
-    const goalToCheckOff = goals[index]
-    goalToCheckOff.completed = this.checked
-    updateGoalsOnPage()
-  }
-
-  checkbox.addEventListener('change', checkOffGoal)
-
-  return checkbox
-}
-
-function createDeleteButton(goal, index){
-  const deleteButton = document.createElement('button')
-  deleteButton.textContent = 'Delete'
-
-  function deleteSelectedGoal(){
-    goals.splice(index, 1);
-    updateGoalsOnPage();
-  }
-
-  deleteButton.addEventListener('click', deleteSelectedGoal)
-
-  return deleteButton
-}
-
-function updateGoal(goal,index){
-  const goalItem = document.createElement('li');
-  goalItem.innerHTML = `<strong>Goal:</strong> ${goal.goal} <br> <strong>Deadline:</strong> ${goal.deadline}`;
-
-  if(goal.completed){
-    goalItem.classList.add('crossed-off')
-  }
-  
-  const checkbox = createGoalCheckbox(goal, index)
-  goalItem.prepend(checkbox)
-
-  const deleteButton = createDeleteButton(goal, index)
-  goalItem.append(deleteButton)
-
-  goalOutput.appendChild(goalItem)
-}
-
-function updateGoalsOnPage(){
-  goalOutput.innerHTML = '' //clear goal list
-  goals.forEach(updateGoal)
-}
+goalForm.addEventListener('submit', addGoal);
 
 function addGoal(e){
   e.preventDefault()
-
-  const goalElement = document.getElementById('goal')
-  const goalValue = goalElement.value
-  
-  const deadlineElement = document.getElementById('deadline').value
-  const deadlineValue = deadlineElement.value
-
-  const goalObject = {
-    goal: goalValue,
-    deadline: deadlineValue,
-    completed: false
-  }
-
-  goals.push(goalObject);
-  updateGoalsOnPage()
 }
 
-document.getElementById('goal-form').addEventListener('submit', addGoal);
+//Next we need to add that goal to the page
+const goalOutput = document.getElementById('goal-output') //"My Goals" area
+
+function addGoalToPage(goal,index){
+  //create HTML element for goal
+  //add it to the page in the "My Goals Area"
+}
+
+function createGoalItem(goal,index){
+  //create HTML list item element with all the child elements shown in the example
+}
+
+function updateGoalsOnPage(){
+  //clear goal list
+  
+  //loop through goals array and add each goal to the page
+  goals.forEach(addGoalToPage)
+}
+
+//create checkbox to add to goal list item
+function createCheckbox(goal, index){
+}
+
+//create delete button to add to goal list item
+function createDeleteButton(goal, index){
+
+}
+
+
+
+

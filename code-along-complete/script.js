@@ -32,7 +32,13 @@ function createDeleteButton(goal, index){
   return deleteButton
 }
 
-function updateGoal(goal,index){
+function addGoalToPage(goal,index){
+  const goalItem = createGoalItem(goal,index)
+
+  goalOutput.appendChild(goalItem)
+}
+
+function createGoalItem(goal, index){
   const goalItem = document.createElement('li');
   goalItem.innerHTML = `<strong>Goal:</strong> ${goal.goal} <br> <strong>Deadline:</strong> ${goal.deadline}`;
 
@@ -40,18 +46,18 @@ function updateGoal(goal,index){
     goalItem.classList.add('crossed-off')
   }
   
-  const checkbox = createGoalCheckbox(goal, index)
+  const checkbox = createCheckbox(goal, index)
   goalItem.prepend(checkbox)
 
   const deleteButton = createDeleteButton(goal, index)
   goalItem.append(deleteButton)
 
-  goalOutput.appendChild(goalItem)
+  return goalItem
 }
 
 function updateGoalsOnPage(){
   goalOutput.innerHTML = '' //clear goal list
-  goals.forEach(updateGoal)
+  goals.forEach(addGoalToPage)
 }
 
 function addGoal(e){
@@ -60,7 +66,7 @@ function addGoal(e){
   const goalElement = document.getElementById('goal')
   const goalValue = goalElement.value
   
-  const deadlineElement = document.getElementById('deadline').value
+  const deadlineElement = document.getElementById('deadline')
   const deadlineValue = deadlineElement.value
 
   const goalObject = {
