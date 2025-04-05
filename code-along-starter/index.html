@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Accountability Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Personal Accountability Tracker</h1>
+  </header>
+
+  <main class="container">
+    <!-- Goal Setting Form -->
+    <section class="goals">
+      <h2>Set Your Goals</h2>
+      <form id="goal-form">
+        <label for="goal">Goal:</label>
+        <input type="text" id="goal" name="goal" placeholder="Enter your goal..." required>
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" required>
+        <button type="submit">Add Goal</button>
+      </form>
+    </section>
+
+    <!-- Goals Display -->
+    <section class="goal-list">
+      <h2>My Goals</h2>
+      <ul id="goal-output">
+        <!-- JavaScript will append goals here -->
+      </ul>
+    </section>
+
+    <!-- Reflection Section -->
+    <section class="reflection">
+      <h2>Daily Reflection</h2>
+      <form id="reflection-form">
+        <label for="reflection">What did you accomplish today?</label>
+        <textarea id="reflection" name="reflection" rows="4" placeholder="Write your reflection..." required></textarea>
+        <button type="submit">Submit Reflection</button>
+      </form>
+
+      <div id="reflection-output">
+        <!-- Reflections will be displayed here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Personal Accountability Tracker</p>
+  </footer>
+
+</body>
+</html>
