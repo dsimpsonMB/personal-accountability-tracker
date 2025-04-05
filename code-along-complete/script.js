@@ -2,14 +2,7 @@ const goals = []
 
 const goalOutput = document.getElementById('goal-output')
 
-function updateGoal(goal,index){
-  const goalItem = document.createElement('li');
-  goalItem.innerHTML = `<strong>Goal:</strong> ${goal.goal} <br> <strong>Deadline:</strong> ${goal.deadline}`;
-
-  if(goal.completed){
-    goalItem.classList.add('crossed-off')
-  }
-  
+function createCheckbox(goal, index){
   const checkbox = document.createElement('input')
   checkbox.type = 'checkbox';
   checkbox.checked = goal.completed;
@@ -21,21 +14,37 @@ function updateGoal(goal,index){
 
   checkbox.addEventListener('change', checkOffGoal)
 
-  goalItem.prepend(checkbox)
+  return checkbox
+}
+
+function createDeleteButton(goal, index){
+  const deleteButton = document.createElement('button')
+  deleteButton.textContent = 'Delete'
 
   function deleteSelectedGoal(){
-    console.log("deleteSelectedGoal")
     goals.splice(index, 1);
-    console.log("goals", goals)
     updateGoalsOnPage();
   }
 
-  const deleteButton = document.createElement('button')
-  deleteButton.textContent = 'Delete'
   deleteButton.addEventListener('click', deleteSelectedGoal)
 
+  return deleteButton
+}
+
+function updateGoal(goal,index){
+  const goalItem = document.createElement('li');
+  goalItem.innerHTML = `<strong>Goal:</strong> ${goal.goal} <br> <strong>Deadline:</strong> ${goal.deadline}`;
+
+  if(goal.completed){
+    goalItem.classList.add('crossed-off')
+  }
+  
+  const checkbox = createGoalCheckbox(goal, index)
+  goalItem.prepend(checkbox)
+
+  const deleteButton = createDeleteButton(goal, index)
   goalItem.append(deleteButton)
-  console.log(goalItem)
+
   goalOutput.appendChild(goalItem)
 }
 
@@ -57,7 +66,6 @@ function addGoal(e){
   }
 
   goals.push(goalObject);
-  console.log("goals after addGoal: ", goals)
   updateGoalsOnPage()
 }
 
