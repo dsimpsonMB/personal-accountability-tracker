@@ -8,7 +8,8 @@ function createCheckbox(goal, index){
   checkbox.checked = goal.completed;
 
   function checkOffGoal(){
-    goals[index].completed = this.checked
+    const goalToCheckOff = goals[index]
+    goalToCheckOff.completed = this.checked
     updateGoalsOnPage()
   }
 
@@ -56,12 +57,15 @@ function updateGoalsOnPage(){
 function addGoal(e){
   e.preventDefault()
 
-  const goal = document.getElementById('goal').value
-  const deadline = document.getElementById('deadline').value
+  const goalElement = document.getElementById('goal')
+  const goalValue = goalElement.value
+  
+  const deadlineElement = document.getElementById('deadline').value
+  const deadlineValue = deadlineElement.value
 
   const goalObject = {
-    goal: goal,
-    deadline: deadline,
+    goal: goalValue,
+    deadline: deadlineValue,
     completed: false
   }
 
