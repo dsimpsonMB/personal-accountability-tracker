@@ -89,6 +89,10 @@
     margin-bottom: 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
   }
+
+  .goal-list ul li > input[type="checkbox"]{
+    margin-right: 10px;
+  }
   
   /* Crossed-off task styling */
   .crossed-off {

@@ -1,11 +1,11 @@
 //First we need to get the data the user inputted into the form
 const goalForm = document.getElementById('goal-form')
-goalForm.addEventListener('submit', addGoal);
+goalForm.addEventListener('submit', addGoal); //listen for when the form is submitted
 
 const goals = [] //where we'll store our goals
 
 function addGoal(e){
-  e.preventDefault()
+  e.preventDefault() // forms by default will refresh the page
 
   //get values from input elements
   const goalElement = document.getElementById('goal')
