@@ -10,13 +10,9 @@ function addGoal(e){
   //get values from input elements
   const goalElement = document.getElementById('goal')
   const goalValue = goalElement.value
-  
-  const deadlineElement = document.getElementById('deadline')
-  const deadlineValue = deadlineElement.value
 
   const goalObject = {
     goal: goalValue,
-    deadline: deadlineValue,
     completed: false
   }
 
@@ -44,7 +40,7 @@ function addGoalToPage(goal,index){
 function createGoalItem(goal, index){
 
   const goalItem = document.createElement('li');
-  goalItem.innerHTML = `<strong>Goal:</strong> ${goal.goal} <br> <strong>Deadline:</strong> ${goal.deadline}`;
+  goalItem.innerHTML = `<strong>Goal:</strong> ${goal.goal}`
 
   if(goal.completed){
     goalItem.classList.add('crossed-off')
@@ -65,6 +61,7 @@ function createCheckbox(goal, index){
   checkbox.type = 'checkbox';
   checkbox.checked = goal.completed;
 
+  //create function to run when checkbox is checked
   function checkOffGoal(){
     const goalToCheckOff = goals[index]
     goalToCheckOff.completed = this.checked
@@ -81,11 +78,13 @@ function createDeleteButton(index){
   const deleteButton = document.createElement('button')
   deleteButton.textContent = 'Delete'
 
+  //create function to run when delete button is pressed
   function deleteSelectedGoal(){
     goals.splice(index, 1);
     updateGoalsOnPage();
   }
 
+  //add delete function to the delete button 
   deleteButton.addEventListener('click', deleteSelectedGoal)
 
   return deleteButton
